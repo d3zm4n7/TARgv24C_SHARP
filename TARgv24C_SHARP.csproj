@@ -51,6 +51,7 @@
     <Compile Include="2. Kordused\MainClass_2osa.cs" />
     <Compile Include="3. FailitootlusJaAndmestruktuur\MainClass_3osa.cs" />
     <Compile Include="5. Kollektsioonid\MainClass_5osa.cs" />
+    <Compile Include="5. Kollektsioonid\Ylesanned.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

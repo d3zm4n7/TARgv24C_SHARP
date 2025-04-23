@@ -6,12 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
 namespace TARgv24C_SHARP._5._Kollektsioonid
 {
     internal class MainClass_5osa
     {
         public static void Main(string[] args)
         {
+            Console.Write("5.osa - Ylesanne 5. Arvuda massiivi statistika. ");
+            Console.Write("Sisesta arvud (nt: 5 3,2 7,7): ");
+            string sisend = Console.ReadLine();
+            double[] arvud = Ylesanned.Tekstist_arvud(sisend);
+
+            Ylesanned.ArvudeStatistika(arvud);
+
+            Console.ReadLine();
+
             ArrayList nimed = new ArrayList();
             nimed.Add("Kati");
             nimed.Add("Mati");
@@ -90,8 +100,6 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
                 Console.WriteLine($"{entry.Key} - {entry.Value.Name}");
 
             Console.ReadLine();
-
-
 
         }
 
