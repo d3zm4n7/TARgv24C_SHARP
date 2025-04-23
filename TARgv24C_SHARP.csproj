@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TARgv24C_SHARP._5._Kollektsioonid.MainClass_5osa</StartupObject>
+    <StartupObject>TARgv24C_SHARP._4._FailitootlusJaAndmestruktuur.MainClass_4osa</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,8 +48,8 @@
   <ItemGroup>
     <Compile Include="3. Kordused\FunktsioonideClass_2osa.cs" />
     <Compile Include="3. Kordused\Isik.cs" />
-    <Compile Include="3. Kordused\MainClass_2osa.cs" />
-    <Compile Include="4. FailitootlusJaAndmestruktuur\MainClass_3osa.cs" />
+    <Compile Include="3. Kordused\MainClass_3osa.cs" />
+    <Compile Include="4. FailitootlusJaAndmestruktuur\MainClass_4osa.cs" />
     <Compile Include="5. Kollektsioonid\MainClass_5osa.cs" />
     <Compile Include="5. Kollektsioonid\Ylesanned.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TARgv24C_SHARP._2._Kordused
+namespace TARgv24C_SHARP._3._Kordused
 {
-    internal class MainClass_2osa
+    internal class MainClass_3osa
     {
         public static void Main(string[] args)
         {
