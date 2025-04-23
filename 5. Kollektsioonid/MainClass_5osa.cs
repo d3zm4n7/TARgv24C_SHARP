@@ -13,7 +13,8 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
     {
         public static void Main(string[] args)
         {
-            Console.Write("5.osa - Ylesanne 5. Arvuda massiivi statistika. ");
+            /*Ylesanne5*/
+            Console.Write("5.osa - Ylesanne 5. Arvuda massiivi statistika. \n");
             Console.Write("Sisesta arvud (nt: 5 3,2 7,7): ");
             string sisend = Console.ReadLine();
             double[] arvud = Ylesanned.Tekstist_arvud(sisend);
@@ -22,6 +23,27 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
 
             Console.ReadLine();
 
+
+
+            /*Ylesanne6*/
+            Console.Write("5.osa - Ylesanne 6. Lemmikloomade register. \n");
+
+            Ylesanned.LemmikloomadeRegister();
+
+            Console.ReadLine();
+
+
+
+            /*Ylesanne7*/
+            Console.Write("5.osa - Ylesanne 7. Valuutakalkulaator. \n");
+
+
+
+            Console.ReadLine();
+
+
+
+            /* Tunnitöö */
             ArrayList nimed = new ArrayList();
             nimed.Add("Kati");
             nimed.Add("Mati");
