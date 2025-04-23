@@ -88,6 +88,40 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
 
             Console.ReadLine(); // Чтобы окно не закрылось
         }
+
+        public static void ValuutaKalkulaator()
+            {
+                // Добавляем валюты в словарь
+                Dictionary<string, Valuuta> valuutad = new Dictionary<string, Valuuta>()
+                {
+                    { "USD", new Valuuta("USD", 1.08) }, // 1 EUR = 1.08 USD
+                    { "GBP", new Valuuta("GBP", 0.86) }, // 1 EUR = 0.86 GBP
+                };
+
+                Console.Write("Sisesta summa: ");
+                double summa = double.Parse(Console.ReadLine());
+
+                Console.Write("Sisesta valuutanimi (nt USD, GBP): ");
+                string sisendValuuta = Console.ReadLine().ToUpper();
+
+                if (!valuutad.ContainsKey(sisendValuuta))
+                {
+                    Console.WriteLine("Sellist valuutat ei leitud.");
+                    return;
+                }
+
+                Valuuta v = valuutad[sisendValuuta];
+
+                // Перевод в EUR
+                double eurodes = summa / v.KurssEurSuhte;
+                Console.WriteLine($"{summa} {v.Nimetus} = {eurodes:F2} EUR");
+
+                // Перевод обратно из EUR
+                double tagasi = eurodes * v.KurssEurSuhte;
+                Console.WriteLine($"{eurodes:F2} EUR = {tagasi:F2} {v.Nimetus}");
+
+                Console.ReadLine();
+            }
     }
     class Lemmikloom
     {

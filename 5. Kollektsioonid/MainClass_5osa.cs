@@ -37,9 +37,10 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
             /*Ylesanne7*/
             Console.Write("5.osa - Ylesanne 7. Valuutakalkulaator. \n");
 
-
+            Ylesanned.ValuutaKalkulaator();
 
             Console.ReadLine();
+
 
 
 
