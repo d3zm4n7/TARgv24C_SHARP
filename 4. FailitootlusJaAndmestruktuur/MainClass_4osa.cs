@@ -45,7 +45,7 @@ namespace TARgv24C_SHARP._4._FailitootlusJaAndmestruktuur
             }
 
 
-
+            /*Список работы*/
             List<string> kuude_list = new List<string>();
             try
             {
