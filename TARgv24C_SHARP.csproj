@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TARgv24C_SHARP._2._Kordused.MainClass_2osa</StartupObject>
+    <StartupObject>TARgv24C_SHARP._5._Kollektsioonid.MainClass_5osa</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,10 +49,15 @@
     <Compile Include="2. Kordused\FunktsioonideClass_2osa.cs" />
     <Compile Include="2. Kordused\Isik.cs" />
     <Compile Include="2. Kordused\MainClass_2osa.cs" />
+    <Compile Include="3. FailitootlusJaAndmestruktuur\MainClass_3osa.cs" />
+    <Compile Include="5. Kollektsioonid\MainClass_5osa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Kuud.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
