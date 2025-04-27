@@ -36,7 +36,7 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
 
             /*Ylesanne7*/
             Console.Write("5.osa - Ylesanne 7. Valuutakalkulaator. \n");
-
+            Console.Write("1 EUR = 1.08 USD\n1 EUR = 0.86 GBP: ");
             Ylesanned.ValuutaKalkulaator();
 
             Console.ReadLine();

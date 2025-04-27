@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TARgv24C_SHARP._4._FailitootlusJaAndmestruktuur.MainClass_4osa</StartupObject>
+    <StartupObject>TARgv24C_SHARP._5._Kollektsioonid.MainClass_5osa</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -59,6 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\Kuud.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="1. Põhikonstruktsionid\" />
+    <Folder Include="2. Valikute konstruktsionid\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

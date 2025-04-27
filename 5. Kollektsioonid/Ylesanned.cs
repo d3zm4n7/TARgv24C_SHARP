@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static TARgv24C_SHARP._5._Kollektsioonid.Ylesanned;
 
 namespace TARgv24C_SHARP._5._Kollektsioonid
 {
@@ -12,10 +13,17 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
         {
             string[] osad = tekst.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
             double[] arvud = new double[osad.Length];
+
             for (int i = 0; i < osad.Length; i++)
             {
-                arvud[i] = double.Parse(osad[i]);
+                while (!double.TryParse(osad[i], out arvud[i]))
+                {
+                    Console.WriteLine($"Viga! '{osad[i]}' ei ole korrektne arv.");
+                    Console.Write($"Sisesta korrektne arv asemele '{osad[i]}': ");
+                    osad[i] = Console.ReadLine(); // даём пользователю ввести новое значение
+                }
             }
+
             return arvud;
         }
 
@@ -51,24 +59,68 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
         {
             List<Lemmikloom> loomad = new List<Lemmikloom>();
 
-            // Ввод данных от пользователя
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine($"\nLemmikloom #{i + 1}:");
-                Console.Write("Nimi: ");
-                string nimi = Console.ReadLine();
-                Console.Write("Liik (nt kass, koer): ");
-                string liik = Console.ReadLine();
-                Console.Write("Vanus: ");
-                int vanus = int.Parse(Console.ReadLine());
+            Console.WriteLine("Vali režiim:");
+            Console.WriteLine("1 - Sisesta loomad käsitsi");
+            Console.WriteLine("2 - Loo loomad automaatselt");
+            Console.Write("Sinu valik: ");
+            string valik = Console.ReadLine();
 
-                loomad.Add(new Lemmikloom(nimi, liik, vanus));
+            if (valik == "1")
+            {
+                // Ручной ввод
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine($"Lemmikloom #{i + 1}:");
+                    Console.Write("Nimi: ");
+                    string nimi = Console.ReadLine();
+                    Console.Write("Liik (kass või koer): ");
+                    string liik = Console.ReadLine();
+
+                    int vanus;
+                    while (true)
+                    {
+                        Console.Write("Vanus: ");
+                        if (int.TryParse(Console.ReadLine(), out vanus))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Viga! Palun sisesta korrektne täisarv.");
+                        }
+                    }
+
+                    loomad.Add(new Lemmikloom(nimi, liik, vanus));
+                }
+            }
+            else if (valik == "2")
+            {
+                // Автоматическое создание
+                Random rnd = new Random();
+                string[] nimed = { "Muri", "Miisu", "Pontu", "Leo", "Bella", "Nora", "Miki", "Simba", "Oscar", "Luna" };
+                string[] liigid = { "kass", "koer" };
+
+                for (int i = 0; i < 5; i++)
+                {
+                    string nimi = nimed[rnd.Next(nimed.Length)];
+                    string liik = liigid[rnd.Next(liigid.Length)];
+                    int vanus = rnd.Next(1, 15); // возраст от 1 до 14
+
+                    loomad.Add(new Lemmikloom(nimi, liik, vanus));
+                }
+
+                Console.WriteLine("\nLoomad loodud automaatselt!");
+            }
+            else
+            {
+                Console.WriteLine("Vale valik. Programm lõpetab töö.");
+                return;
             }
 
-            Console.WriteLine("\n--- Kõik kassid ---");
+            Console.WriteLine("\n------------------ Kõik kassid ------------------");
             foreach (var kass in loomad.Where(l => l.Liik.ToLower() == "kass"))
             {
-                Console.WriteLine($"{kass.Nimi} ({kass.Vanus} a) – {kass.Liik}");
+                Console.WriteLine($"Nimi: {kass.Nimi,-10} | Liik: {kass.Liik,-5} | Vanus: {kass.Vanus} a"); /*выравнивает красиво вывод информации*/ /*Console.WriteLine($"{kass.Nimi} ({kass.Vanus} a) – {kass.Liik}");*/
             }
 
             double keskmineVanus = loomad.Average(l => l.Vanus);
@@ -90,40 +142,61 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
         }
 
         public static void ValuutaKalkulaator()
+        {
+            // Добавляем валюты в словарь
+            Dictionary<string, Valuutta> valuutad = new Dictionary<string, Valuutta>()
             {
-                // Добавляем валюты в словарь
-                Dictionary<string, Valuuta> valuutad = new Dictionary<string, Valuuta>()
+                { "USD", new Valuutta("USD", 1.08) }, // 1 EUR = 1.08 USD
+                { "GBP", new Valuutta("GBP", 0.86) }  // 1 EUR = 0.86 GBP
+            };
+
+            double summa;
+            while (true)
+            {
+                Console.Write("\nSisesta summa: ");
+                if (double.TryParse(Console.ReadLine(), out summa))
                 {
-                    { "USD", new Valuuta("USD", 1.08) }, // 1 EUR = 1.08 USD
-                    { "GBP", new Valuuta("GBP", 0.86) }, // 1 EUR = 0.86 GBP
-                };
-
-                Console.Write("Sisesta summa: ");
-                double summa = double.Parse(Console.ReadLine());
-
-                Console.Write("Sisesta valuutanimi (nt USD, GBP): ");
-                string sisendValuuta = Console.ReadLine().ToUpper();
-
-                if (!valuutad.ContainsKey(sisendValuuta))
-                {
-                    Console.WriteLine("Sellist valuutat ei leitud.");
-                    return;
+                    break;
                 }
-
-                Valuuta v = valuutad[sisendValuuta];
-
-                // Перевод в EUR
-                double eurodes = summa / v.KurssEurSuhte;
-                Console.WriteLine($"{summa} {v.Nimetus} = {eurodes:F2} EUR");
-
-                // Перевод обратно из EUR
-                double tagasi = eurodes * v.KurssEurSuhte;
-                Console.WriteLine($"{eurodes:F2} EUR = {tagasi:F2} {v.Nimetus}");
-
-                Console.ReadLine();
+                else
+                {
+                    Console.WriteLine("Viga! Palun sisesta korrektne summa.");
+                }
             }
-    }
-    class Lemmikloom
+
+            Console.Write("Sisesta valuutanimi (nt USD, GBP): ");
+            string sisendValuuta = Console.ReadLine().ToUpper();
+
+            if (!valuutad.ContainsKey(sisendValuuta))
+            {
+                Console.WriteLine("Sellist valuutat ei leitud.");
+                return;
+            }
+
+            Valuutta v = valuutad[sisendValuuta];
+
+            // Перевод в EUR
+            double eurodes = summa / v.KurssEurSuhte;
+            Console.WriteLine($"{summa} {v.Nimetus} = {eurodes:F2} EUR");
+
+            // Найти другую валюту
+            string teineValuuta = valuutad.Keys.FirstOrDefault(k => k != sisendValuuta);
+
+            if (teineValuuta != null)
+            {
+                Valuutta teine = valuutad[teineValuuta];
+                double teisendatud = eurodes * teine.KurssEurSuhte;
+                Console.WriteLine($"{eurodes:F2} EUR = {teisendatud:F2} {teine.Nimetus}");
+            }
+            else
+            {
+                Console.WriteLine("Teist valuutat teisendamiseks ei leitud.");
+            }
+
+            Console.ReadLine();
+        }
+
+        class Lemmikloom
     {
         public string Nimi { get; set; }
         public string Liik { get; set; }
@@ -139,7 +212,7 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
 
     public class Valuuta
     {
-        public string Nimetus { get; set; }           // например: USD, GBP, JPY
+        public string Nimetus { get; set; }           // например: USD, GBP
         public double KurssEurSuhte { get; set; }     // сколько 1 EUR стоит в этой валюте
 
         public Valuuta(string nimetus, double kurss)
@@ -148,4 +221,19 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
             KurssEurSuhte = kurss;
         }
     }
+
+    public class Valuutta
+    {
+        public string Nimetus { get; set; }
+        public double KurssEurSuhte { get; set; }
+
+        public Valuutta(string nimetus, double kurssEurSuhte)
+        {
+            Nimetus = nimetus;
+            KurssEurSuhte = kurssEurSuhte;
+        }
+    }
 }
+
+}
+
