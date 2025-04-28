@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TARgv24C_SHARP._5._Kollektsioonid.MainClass_5osa</StartupObject>
+    <StartupObject>TARgv24C_SHARP._3._Kordused.MainClass_3osa</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1. ja 2. Põhikonstruktsionid ja valikute konstruktsioonid\FunktsioonideClass_1osa.cs" />
+    <Compile Include="1. ja 2. Põhikonstruktsionid ja valikute konstruktsioonid\MainClass_1osa.cs" />
     <Compile Include="3. Kordused\FunktsioonideClass_2osa.cs" />
     <Compile Include="3. Kordused\Isik.cs" />
     <Compile Include="3. Kordused\MainClass_3osa.cs" />
+    <Compile Include="3. Kordused\Ylesanded.cs" />
     <Compile Include="4. FailitootlusJaAndmestruktuur\MainClass_4osa.cs" />
     <Compile Include="5. Kollektsioonid\MainClass_5osa.cs" />
     <Compile Include="5. Kollektsioonid\Ylesanned.cs" />
@@ -60,9 +63,6 @@
   <ItemGroup>
     <Content Include="bin\Debug\Kuud.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="1. Põhikonstruktsionid\" />
-    <Folder Include="2. Valikute konstruktsionid\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -210,30 +210,18 @@ namespace TARgv24C_SHARP._5._Kollektsioonid
         }
     }
 
-    public class Valuuta
-    {
-        public string Nimetus { get; set; }           // например: USD, GBP
-        public double KurssEurSuhte { get; set; }     // сколько 1 EUR стоит в этой валюте
-
-        public Valuuta(string nimetus, double kurss)
+        public class Valuutta
         {
-            Nimetus = nimetus.ToUpper();
-            KurssEurSuhte = kurss;
+            public string Nimetus { get; set; }
+            public double KurssEurSuhte { get; set; }
+
+            public Valuutta(string nimetus, double kurssEurSuhte)
+            {
+                Nimetus = nimetus;
+                KurssEurSuhte = kurssEurSuhte;
+            }
         }
     }
-
-    public class Valuutta
-    {
-        public string Nimetus { get; set; }
-        public double KurssEurSuhte { get; set; }
-
-        public Valuutta(string nimetus, double kurssEurSuhte)
-        {
-            Nimetus = nimetus;
-            KurssEurSuhte = kurssEurSuhte;
-        }
-    }
-}
 
 }
 
