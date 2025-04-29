@@ -9,7 +9,7 @@ namespace TARgv24C_SHARP._4._FailitootlusJaAndmestruktuur
 {
     internal class MainClass_4osa
     {
-        static void Main()
+        public static void Main(string[] args)
         {
             string failinimi = "kuud.txt";
 

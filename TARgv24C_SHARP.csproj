@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TARgv24C_SHARP._5._Kollektsioonid.MainClass_5osa</StartupObject>
+    <StartupObject>TARgv24C_SHARP._3._Kordused.Ylesanded</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="1. ja 2. Põhikonstruktsionid ja valikute konstruktsioonid\FunktsioonideClass_1osa.cs" />
     <Compile Include="1. ja 2. Põhikonstruktsionid ja valikute konstruktsioonid\MainClass_1osa.cs" />
+    <Compile Include="3. Kordused\ArvuTöötlus.cs" />
     <Compile Include="3. Kordused\FunktsioonideClass_2osa.cs" />
     <Compile Include="3. Kordused\Isik.cs" />
     <Compile Include="3. Kordused\MainClass_3osa.cs" />
