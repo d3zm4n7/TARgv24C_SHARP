@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TARgv24C_SHARP._3._Kordused.MainClass_3osa</StartupObject>
+    <StartupObject>TARgv24C_SHARP._5._Kollektsioonid.MainClass_5osa</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

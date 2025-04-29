@@ -9,78 +9,41 @@ namespace TARgv24C_SHARP._4._FailitootlusJaAndmestruktuur
 {
     internal class MainClass_4osa
     {
-        public static void Main(string[] args)
+        static void Main()
         {
-            /*Объявляем файл для всего класса*/
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Kuud.txt");
+            string failinimi = "kuud.txt";
 
-            /*Добавляем в файл слово*/
-            try
-            {
-                Console.WriteLine("Sisesta mingi tekst: ");
-                string lause = Console.ReadLine();
+            // 1. Записываем 3 месяца в файл
+            List<string> kuud = new List<string> { "Mai", "Juuni", "Juuli" };
+            File.WriteAllLines(failinimi, kuud);
+            Console.WriteLine("Файл записан: " + failinimi);
 
-                using (StreamWriter sw = new StreamWriter(path, true)) // true = lisa lõppu
-                {
-                    sw.WriteLine(lause); // можешь добавить строку, чтобы записывать введённый текст
-                }
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Mingi viga failiga");
-            }
+            // 2. Чтение месяцев из файла в List<string>
+            kuud = new List<string>(File.ReadAllLines(failinimi));
 
-            /*Читаем из файла все слова*/
-            try
-            {
-                StreamReader text = new StreamReader(path);
-                string laused = text.ReadToEnd();
-                text.Close();
-                Console.WriteLine("\nSõnad salvestatud failis on:");
-                Console.WriteLine(laused);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Mingi viga failiga, ei saa faili lugeda");
-            }
+            // 3. Удаляем "Juuni" и изменяем первый элемент
+            kuud.Remove("Juuni");
+            if (kuud.Count > 0)
+                kuud[0] = "Aprill"; // изменяем первый месяц на "Aprill"
 
-
-            /*Список работы*/
-            List<string> kuude_list = new List<string>();
-            try
-            {
-                foreach (string rida in File.ReadAllLines(path))
-                {
-                    kuude_list.Add(rida);
-                }
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Viga failiga!");
-            }
-
-
-
-            foreach (string kuu in kuude_list)
+            // 4. Вывод всех месяцев
+            Console.WriteLine("Текущий список месяцев:");
+            foreach (string kuu in kuud)
             {
                 Console.WriteLine(kuu);
             }
 
-            // Eemalda "Juuni"
-            kuude_list.Remove("Juuni");
+            // 5. Поиск месяца по имени
+            Console.Write("\nВведите месяц для поиска: ");
+            string otsitav = Console.ReadLine();
+            if (kuud.Contains(otsitav))
+                Console.WriteLine($"Месяц \"{otsitav}\" найден.");
+            else
+                Console.WriteLine($"Месяц \"{otsitav}\" не найден.");
 
-            // Muuda esimest elementi
-            if (kuude_list.Count > 0)
-                kuude_list[0] = "Veeel kuuu";
-
-            Console.WriteLine("--------------Kustutasime juuni-----------");
-
-            foreach (string kuu in kuude_list)
-            {
-                Console.WriteLine(kuu);
-            }
-            Console.ReadLine();
-
+            // 6. Сохраняем изменения обратно в файл
+            File.WriteAllLines(failinimi, kuud);
+            Console.WriteLine("\nИзменения сохранены в файл.");
         }
     }
 }
